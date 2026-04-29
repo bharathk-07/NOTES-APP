@@ -1,2 +1,2 @@
-# NOTES-APP
-A Notes App is a simple yet powerful application designed to help users quickly capture, organize, edit, and manage their thoughts, ideas, and important information in a digital format.
+NOTES APP:
+A simple and user-friendly Notes App built using Python (Flask), HTML, CSS, and JavaScript. This application allows users to create, edit, delete, and manage notes efficiently with date and time tracking.
