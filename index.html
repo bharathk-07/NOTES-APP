@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>❄️ Snow Notes</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(#0f2027, #203a43, #2c5364);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .app {
+            width: 400px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: #00c6ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .note {
+            background: rgba(255,255,255,0.15);
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+
+        .btns a button {
+            width: 48%;
+            margin-top: 5px;
+        }
+
+        .edit { background: orange; }
+        .delete { background: crimson; }
+
+        /* ❄️ Snow Animation */
+        .snow {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .snow span {
+            position: absolute;
+            display: block;
+            width: 5px;
+            height: 5px;
+            background: white;
+            animation: snow 10s linear infinite;
+        }
+
+        @keyframes snow {
+            0% { transform: translateY(-10px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ❄️ Snow -->
+<div class="snow">
+    {% for i in range(80) %}
+    <span style="left: {{ i*2 }}%; animation-duration: {{ 5 + (i%5) }}s;"></span>
+    {% endfor %}
+</div>
+
+<div class="app">
+    <h2>❄️ Snow Notes</h2>
+
+    <form method="POST">
+        <input name="title" placeholder="Title..." required>
+        <textarea name="note" placeholder="Write note..." required></textarea>
+        <button>Add Note</button>
+    </form>
+
+    {% for note in notes %}
+    <div class="note">
+        <b>{{ note.title }}</b><br>
+        {{ note.text }}<br>
+        <small>{{ note.time }}</small>
+
+        <div class="btns">
+            <a href="/edit/{{ loop.index0 }}">
+                <button class="edit">Edit</button>
+            </a>
+
+            <a href="/delete/{{ loop.index0 }}">
+                <button class="delete">Delete</button>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Note</title>
+</head>
+<body style="background:black; color:white; text-align:center;">
+
+<h2>✏️ Edit Note</h2>
+
+<form method="POST">
+    <input name="title" value="{{ note.title }}"><br><br>
+    <textarea name="note">{{ note.text }}</textarea><br><br>
+    <button>Update</button>
+</form>
+
+</body>
+</html>
